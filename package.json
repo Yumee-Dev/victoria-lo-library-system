@@ -1,0 +1,23 @@
+{
+  "name": "librarysystem",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "sass src/styles.scss public/styles.css && babel src --out-dir public --presets react-app/prod && node app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-react-app": "^3.1.2",
+    "babel-runtime": "^6.26.0",
+    "express": "^4.17.3",
+    "node-fetch": "^3.2.6",
+    "sass": "^1.50.1",
+    "uuid": "^8.3.2",
+    "ydb-sdk": "^3.0.0"
+  }
+}
