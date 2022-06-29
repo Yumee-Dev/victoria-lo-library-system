@@ -39,6 +39,37 @@ async function addBook(req, res, next) {
   }
 }
 
+async function editBook(req, res, next) {
+  for (const key in req.body) {
+    if (req.body[key].trim() === '') {
+      return res.json({
+        error: true,
+        errorMessage: 'Input values are not filled!'
+      });    
+    }
+    if (!/^[a-z'!:;\.\-\,\?\d\s]*$/i.test(req.body[key]) || ['drop', 'delete'].some(element => req.body[key].toLowerCase().includes(element))) {
+      return res.json({
+        error: true,
+        errorMessage: 'Invalid input values!'
+      });
+    }
+  }
+  const book = new Book(req.body.id, req.body.title, req.body.author, req.body.annotation, req.body.published);
+  try {
+    const saveResult = await book.save();
+    return res.json({
+      error: false,
+      result: saveResult,
+      id: book.id
+    });
+  } catch (error) {
+    res.json({
+      error: true,
+      errorMessage: 'Something wrong with database!'
+    });
+  }
+}
+
 async function deleteBook(req, res, next) {
 // TURN ON LATER
   // return res.json({
@@ -74,5 +105,6 @@ module.exports = {
   getMain: getMain,
   getAllBooks: getAllBooks,
   addBook: addBook,
+  editBook: editBook,
   deleteBook: deleteBook
 };

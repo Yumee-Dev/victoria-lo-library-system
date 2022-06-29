@@ -1,3 +1,9 @@
+// GETTING ACCESS TO YDB
+// https://cloud.yandex.com/en-ru/docs/iam/operations/iam-token/create
+// get OAuth token
+// exchange it for IAM token (Replit uses cURL syntax, VSCode uses PowerShell syntax)
+// put it to the environmental variable YDB_ACCESS_TOKEN_CREDENTIALS
+
 const { v4: uuidv4 } = require('uuid');
 
 const { Driver, TokenAuthService, getLogger } = require('ydb-sdk');
